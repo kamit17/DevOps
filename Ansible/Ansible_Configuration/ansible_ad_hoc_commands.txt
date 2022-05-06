@@ -1,0 +1,37 @@
+there are two ways we with managed nodes using adhoc commands or playbooks .
+
+adhoc commands are useful for executing a single task on a group or a server or multipel groups . .
+
+Playbooks are useful for individuals tasks comibined together in a playbook .
+
+-------------------------------------------------------------------------------------
+syntax of ansible ad hoc  command
+ansible [-i <inventory file>] server_name:group1:group2 -m <module> [-a argument_value]
+----------------------------------------------------------------------------------------
+ansible <serverName. -m <modulename>
+Based on your required task you will select a module .
+
+syntax for groups:
+ansible <groupname1:groupname2> -m "modulename" <command>
+
+in ansible.cfg we  provide the list of inventory in .hosts file
+
+In case we have multiple hosts files then you can provide the required inventory files location  while running the ansible adhoc command.
+
+syntax : ansible -i <ansible inventory file name> <servername> -m <module> <command>
+--------------------------------------
+How to understand which module to use :
+
+run ansible -doc -l on your ansible controller to see different modules
+
+based on which task we need, we can run the module
+
+--------------------------------------------
+
+ To learn how to use a specific module run
+ ansible -doc <modulename>
+--------------------------------------------
+
+What are modules : -- Predefined programs which is able to execute our tasks on our managed nodes .
+
+

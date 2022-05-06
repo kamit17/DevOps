@@ -1,0 +1,3 @@
+how do adhoc commands execute on managed nodes ?
+
+1) when you run it, ansible will look into ansible.cfg for configuration details . eg: inventory

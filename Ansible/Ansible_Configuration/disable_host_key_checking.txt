@@ -1,0 +1,23 @@
+Host Key checking -- While  connecting to any managed node for the first time, it will ask if you want to continue connecting.
+We want to  disable it .
+
+to disable it -->
+
+[ansadmin@centos7 ~]$ mkdir my_ansible_prod
+[ansadmin@centos7 ~]$ mkdir my_ansible_nprod
+[ansadmin@centos7 ~]$ cd my_ansible_nprod/
+[ansadmin@centos7 my_ansible_nprod]$ ls
+[ansadmin@centos7 my_ansible_nprod]$ sudo chown -R ansadmin *sudo cp -r /etc/ansible/* /home/ansadmin/my_ansible_nprod
+[ansadmin@centos7 my_ansible_nprod]$ sudo chown -R ansadmin *
+
+
+Disable Host key checking
+temporary -
+on command line export ANSIBLE_HOST_KEY_CHECKING=False
+export ANSIBLE_HOST_KEY_CHECKING=False -- is an environment variable onfor your ansible. if we set this value then ansible will not check host key verification.
+
+Second way is to  set host_key_checking = False in ansible_cfg file.
+cat ansible.cfg | grep -i host_key_
+#host_key_checking = False
+after uncommenting this line then if you run ansible all -m ping then it will not ask yes or no.
+

@@ -1,0 +1,16 @@
+default location is /etc/ansible/ansible.cfg
+
+It has least proiority while running adhoc commands
+ 
+you can define your ansible.cfg file in different lcoation, but while running ansible it will follow some priority and based on that it will select ansible.cfg files
+
+
+Locations wiht priority ( top to bottom )
+    ANSIBLE_CONFIG environment variable
+    ./ansible.cfg from the current directory
+    ~/.ansible.cfg file in home directory
+    /etc/ansible/ansible.cfg default ansible.cfg file
+
+Ansible will nly use the configuration settings from the file which is found in this sequence first, it will not look for the settings in the higher sequence files if the setting is not present in the file which is chosen for deployment.
+
+

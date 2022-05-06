@@ -1,0 +1,18 @@
+steps to configure Ansible
+Requirement for Managed node /client
+    python 2 or python3
+if we don't have python on  managed node, we can work with managed mode using raw modules
+
+
+ANsible Engine uses SSH connection to connect and work with Managed nodes
+
+We can creaet ssh Connection in two ways:
+    Password Authentication
+    With SSH Keys
+
+Provide the Manged NOdes IP/FQDN in inventory files on Ansible Engine
+
+
+Test the configuration by running: ansible all -m ping
+
+
