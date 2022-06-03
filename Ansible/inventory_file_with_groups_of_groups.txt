@@ -1,0 +1,61 @@
+ what is inventory file?
+ The ansible inventory files defines the list of hosts, upon which ansible works.
+
+ default home locationn of ansible is /etc/ansible
+  in ansible.cfg we have configuration to work ansible with your nodes.
+
+  One of teh things in inventory file where we define the managed nodes.If we run any command from the location where the ansible.cfg is then it will pick up the inventory file that is at that location
+[ansadmin@centos7 my_ansible_nprod]$ cat ansible.cfg | grep -i inventory
+inventory      =./hosts
+
+you define the hosts in the  hosts file and ansible.cfg picks it up at the location where hosts are defined ( in this case hosts )
+54.82.242.31
+3.80.125.84
+54.196.180.178
+
+to ping a single server :
+ansible <ip address of the node> -m ping
+
+
+if you want to work with 2 then
+ansible <ip address of the node>:<ip address of second host>  -m ping
+
+if there are n numer of servers, the above are not a good practce
+
+in that case open the inventory file(.hosts file)
+
+
+scenario:
+if you want to add your localhost as a managed node to ansible then you need to copy the ssh id to this server
+
+to do this
+[ansadmin@centos7 ~]$ cd .ssh/
+[ansadmin@centos7 .ssh]$ ls -lrt
+total 12
+
+
+if you have n number of servers in your invetory  then you can  make groups of the n numbers of groups by making itmes like
+    [group1]
+    <ip of servers under group1]
+    [group2]
+    <ip of the servers under group2]
+
+then call using group1 or group2
+
+ansible group1 -m ping
+
+This way we can divide into groups like webservers, database servers
+
+provide groupnames in [groups] without any space in groups
+
+
+if we want to work with two groups together then
+    ansible group1:group2 -m ping all
+
+
+but if we don't want to  call using like that then we can club the groups that are in different group
+The syntax is
+[groupname:children]
+group1
+group2
+
